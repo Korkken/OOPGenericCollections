@@ -5,16 +5,16 @@ using System.Reflection.Metadata;
 
 Stack<Employee> Employees = new Stack<Employee>();
 
-Employee Olle = new Employee("001", "Olle", "Male", 10000);
+Employee Cassandra = new Employee("001", "Cassandra", "Female", 10000);
 Employee Kalle = new Employee("002", "Kalle", "Male", 11000);
 Employee Anton = new Employee("003", "Anton", "Male", 12000);
 Employee Sebbe = new Employee("004", "Sebbe", "Male", 13000);
-Employee Robin = new Employee("005", "Robin", "Male", 14000);
-Employees.Push(Olle);
+Employee Sara = new Employee("005", "Sara", "Female", 14000);
+Employees.Push(Cassandra);
 Employees.Push(Kalle);
 Employees.Push(Anton);
 Employees.Push(Sebbe);
-Employees.Push(Robin);
+Employees.Push(Sara);
 
 
 
@@ -36,18 +36,61 @@ for(int i = Employees.Count; i > 0; i--)
 }
 
 
-Employees.Push(Olle);
+Employees.Push(Cassandra);
 Employees.Push(Kalle);
 Employees.Push(Anton);
 Employees.Push(Sebbe);
-Employees.Push(Robin);
+Employees.Push(Sara);
 Console.WriteLine("\n Peek:");
 for (int i = 0; i < 2; i++)
 {
     Console.WriteLine(Employees.Peek().Name);
 
     Console.WriteLine($"Antal personer i stacken: {Employees.Count}");
-}    
+}
+
+if(Employees.Contains(Anton))
+{
+    Console.WriteLine("Anton existerar i stacken");
+}
+else
+{
+    Console.WriteLine("Anton existerar inte i stacken");
+}
+
+
+List<Employee> EmployeeList = new List<Employee>(
+    new Employee[]
+    {
+        Cassandra,
+        Kalle,
+        Anton,
+        Sebbe,
+        Sara
+    });
+
+if(EmployeeList.Contains(Cassandra))
+{
+    Console.WriteLine("\nCassandra objektet existerar i listan");
+}
+else
+{
+    Console.WriteLine("Cassandra objektet existerar inte i listan");
+}
+Console.WriteLine("\nFörsta mannen i objektet");
+var FirstMale = EmployeeList.Find(x => x.Gender == "Male");
+
+Console.WriteLine($"Namn: {FirstMale.Name} ID: {FirstMale.Id}");
+Console.WriteLine("\nAlla männen i objektet");
+List<Employee> AllMales = EmployeeList.FindAll(x => x.Gender == "Male");
+
+foreach(Employee males in AllMales)
+{
+    Console.WriteLine($"Name: {males.Name} ID: {males.Id}");
+}
+
+
+
 
 
 
